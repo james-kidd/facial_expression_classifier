@@ -54,14 +54,14 @@ def showcase_images(face_df):
     plt.show()
 
 
-def showcase_augmented_image(dataset, aug_sequence):
-    plt.figure(figsize=(8, 8), facecolor='black')
-    plt.suptitle("Example of an image augmented", fontsize=14, color = 'white')
-    for image, _ in dataset.take(1):
-        for i in range(9):
-            augmented_images = aug_sequence(image)
-            ax = plt.subplot(3, 3, i + 1)
-            plt.imshow(augmented_images[0].numpy().astype("uint8"))
-            plt.axis("off")
+# def showcase_augmented_image(dataset, aug_sequence):
+#     plt.figure(figsize=(8, 8), facecolor='black')
+#     plt.suptitle("Example of an image augmented", fontsize=14, color = 'white')
+#     for image, _ in dataset.take(1):
+#         for i in range(9):
+#             augmented_images = aug_sequence(image)
+#             ax = plt.subplot(3, 3, i + 1)
+#             plt.imshow(augmented_images[0].numpy().astype("uint8"))
+#             plt.axis("off")
 
     
