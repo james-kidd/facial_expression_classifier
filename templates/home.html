@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title> Emotion Detection </title>
+        </head>
+        
+        <body>
+            <h1> <center>Emotion Recognition</center> </h1>
+            <br/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <form class= "text-center" action='/', method="post" enctype="multipart/form-data">
+                <input class="form-control" type="file" name="imagefile" >
+                <br/>
+                <input class="btn btn-primary mt-3" type="submit" value="Predict Image" >
+            </form>
+            <br/>
+        {% if img_path %}
+            <center> <img src="{{img_path}}" height="400px" width="800px"> </center>
+        {% endif %}
+            
+            
+        </body>
+        
+    </html>
