@@ -1,3 +1,10 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+
 
 def plot_dataset_share(face_df):
     distribution_labels = face_df.groupby('usage')['label_name'].value_counts()
@@ -51,6 +58,7 @@ def showcase_images(face_df):
     plt.show()
 
 
+    
 def showcase_augmented_image(dataset, aug_sequence):
     plt.figure(figsize=(8, 8), facecolor='black')
     plt.suptitle("Example of an image augmented", fontsize=14, color = 'white')
@@ -61,4 +69,18 @@ def showcase_augmented_image(dataset, aug_sequence):
             plt.imshow(augmented_images[0].numpy().astype("uint8"))
             plt.axis("off")
 
+def create_confusion_matrix(test_ds, model, class_names, depth):
+    predictions = model.predict(test_ds)
+    prediction_class = np.argmax(predictions, axis = 1) 
     
+    true_class = []
+    for label in test_ds.unbatch():
+        true_class.append(label[1].numpy())
+        
+    mat = confusion_matrix(true_class, prediction_class, labels = np.arange(0,7,1))
+    
+    sns.heatmap(mat, square=True, annot=True, fmt='d', cbar=True,
+                xticklabels=class_names, yticklabels=class_names)
+    plt.suptitle(f'Confusion Matrix : {depth}', fontsize=12)
+    plt.ylabel('true emotion')
+    plt.xlabel('predicted emotion')

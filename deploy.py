@@ -8,7 +8,7 @@ from keras.models import load_model
 
 app = Flask(__name__)
 
-model = load_model('my_model_1')
+model = load_model('model/my_model_deep_m__40_epochs')
 
 picFolder = os.path.join('static', 'pics')
 app.config['UPLOAD_FOLDER'] = picFolder
@@ -21,15 +21,20 @@ def home():
 
 @app.route('/', methods=["POST", "GET"])
 def predict():
-    imagefile = request.files['imagefile']     
+                
+    imagefile = request.files['imagefile']
     
-    # used to upload the photo
-    image_path = os.path.join(app.config['UPLOAD_FOLDER'], imagefile.filename)
-    imagefile.save(image_path)                                          
+    try:
+        # used to upload the photo
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], imagefile.filename)
+        imagefile.save(image_path)                                          
+
+        #generate predictions
+        predict = predict_image(image_path, model)
+        demo_img_path = showcase_prediction(predict, image_path)
     
-    #generate predictions
-    predict = predict_image(image_path, model)
-    demo_img_path = showcase_prediction(predict, image_path)
+    except IsADirectoryError:
+        demo_img_path = os.path.join(app.config['UPLOAD_FOLDER'], 'image-not-found.jpeg')
     
     return render_template('home.html', img_path = demo_img_path )
 
