@@ -35,48 +35,14 @@
 For this project, I have developed and deployed a convolutional neural network (CNN) for facial expression recognition.
     <br />
     <a href="https://github.com/james-kidd/facial_expression_classifier"><strong>Explore the docs »</strong></a>
-<!--     <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a> -->
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Project <a name="about"></a>
 
 Facial expressions are a key aspect to how humans interact with each other to convey emotions. The ability to computationally recognize emotions is a key aspect of human-machine interfaces. I would like to showcase the various data-engineering skills I have developed the last few months.
 
@@ -162,11 +128,46 @@ In order to increase the diversity of training set, random transformations to im
 <img src="static/data_augmented.png" width="500"/>
 </center> </br>
 
-### CNN Architecture
+### Model Architecture
+A deep convolutional neural network was designed. The model architecture consisted of 4 convolutional layers, paired with two fully connected (FC) layers. The Rectified Linear Unit (ReLU) activation function was used within all the layers.
 
-### Evaluate
+```
+.
+├── 64 3x3 filters
+│   ├── Batch Normalization
+│   ├── Max Poolin g2D
+│   ├── Dropout
+│
+├── 128 5x5 filters
+│   ├── Batch Normalization
+│   ├── Max Poolin g2D
+│   ├── Dropout
+│
+├── 512 3x3 filters
+│   ├── Batch Normalization
+│   ├── Max Poolin g2D
+│   ├── Dropout
+│
+├── 512 3x3 filters
+│   ├── Batch Normalization
+│   ├── Max Poolin g2D
+│   ├── Dropout
+│
+├── FC layer (256 neurons)
+│
+├── FC layer (512 neurons)
+.   
+```
+
+### Training
+The model was trained for 40 epochs, with batche sizes of 128. The validation split of the training data was 20%. 
 
 ## Deployment
+
+The model was deployed onto a Flask application. To deploy on a local host,
+
+> `python deploy.py`
+
 
 ## Project Plan
 
@@ -197,7 +198,7 @@ In order to increase the diversity of training set, random transformations to im
 <!-- CONTACT -->
 ## Contact
 
-James Kidd - [![LinkedIn][linkedin-shield]][linkedin-url]
+James Kidd - [LinkedIn][linkedin-url]
 
 Project Link: [facial expression classifier](https://github.com/james-kidd/facial_expression_classifier)
 
@@ -205,25 +206,14 @@ Project Link: [facial expression classifier](https://github.com/james-kidd/facia
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/james-kidd-mtl/
 
 [product-screenshot]: static/demo_output.jpeg
-[python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
 
+[python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
 [python-url]: https://www.python.org/
 [tensorflow]: https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white
 [tensorflow-url]: https://www.tensorflow.org/
