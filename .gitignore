@@ -1,0 +1,12 @@
+#macOS Files
+.DS_Store
+
+#zip
+.zip
+
+data/Training/*
+data/Test/*
+
+app.ipynb
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
